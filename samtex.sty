@@ -1,0 +1,140 @@
+% % PACKAGE:    samtex
+% % FILE:       samtex.sty
+% % VERSION:    v1.0.0
+% % DATE:       2022/04/27
+% % AUTHOR:     Sam Gauck (@Samasaur1 on GitHub)
+
+% % COPYRIGHT:  Copyright (C) 2001 Sam Gauck
+
+% % USAGE:      This package provides a collection of small utilites. The current utilities are listed below:
+% %              - 'mathsets' provides \Z, \C, \N, etc.
+% %              - 'contradiction' provides \contradiction
+% %              - 'phindent' provides \phindent
+% %             All utilities can be loaded with the '*' option
+% % REQUIRES:   'mathsets' requires amsfonts, which is automatically imported.
+
+% % HISTORY:    2022/04/27:
+% %              - first public version
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{samtex}[2022/04/26 v1.0.0 Various helpful LaTeX additions]
+
+%https://www.latex-project.org/help/documentation/clsguide.pdf
+
+% MARK: - SaMTeX logo itself
+% Guidelines from https://web.archive.org/web/20220120232453/https://www.tug.org/pracjourn/2005-3/walden-travels/walden-travels.pdf and https://web.archive.org/web/20071011230511/http://edward.oconnor.cx/2007/08/tex-poshlet
+
+% \def\TeX{T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX}
+% \def\LaTeX{%
+%       L\kern-.36em
+%       {\setbox0=\hbox{T}%
+%       \vbox to \ht0{\hbox{\the\scriptfont0 A}\vss}}%
+%       \kern-.15em
+%       \TeX
+% }
+\def\SaMTeX{%
+S\kern-.1em
+{\setbox0=\hbox{T}%
+    \vbox to \ht0{\hbox{\tiny A}\vss}}\kern-.16em%
+M\kern-.05em%
+\TeX
+}
+
+% MARK: - All options are declared here
+\newif\if@mathsets
+\DeclareOption{mathsets}{\@mathsetstrue}
+\newif\if@contradiction
+\DeclareOption{contradiction}{\@contradictiontrue}
+\newif\if@phindent
+\DeclareOption{phindent}{\@phindenttrue}
+\newif\if@compoundrhoassignment
+\DeclareOption{compoundrhoassignment}{\@compoundrhoassignmenttrue}
+
+% The '*' option (for every option) and the error handling options are declared here
+\DeclareOption{*}{\@mathsetstrue\@contradictiontrue\@phindenttrue\@compoundrhoassignmenttrue}
+\DeclareOption*{\PackageWarningNoLine{samtex}{Unknown option ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+% MARK: - Actual handling of options
+\if@mathsets
+    \RequirePackage{amsfonts}
+    \newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+    \newcommand{\R}{\ensuremath{\mathbb{R}}}
+    \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+    \newcommand{\C}{\ensuremath{\mathbb{C}}}
+    \newcommand{\N}{\ensuremath{\mathbb{N}}}
+    \newcommand{\Nplus}{\ensuremath{\mathbb{N}^{+}}}
+    \newcommand{\Fplus}{\ensuremath{F^{+}}}
+    \newcommand{\Fminus}{\ensuremath{F^{-}}}
+\fi
+
+\if@contradiction
+    \newcommand{\contradiction}{\Rightarrow\mskip-\thinmuskip\Leftarrow}
+\fi
+
+\if@phindent
+    \newcommand{\phindent}{\phantom{indent}}
+\fi
+
+\if@compoundrhoassignment
+    \def\plusequals#1#2#3{\rho_{#1}\rightarrow\rho_{#1}+{#2}\rho_{#3}}
+    \def\minusequals#1#2#3{\rho_{#1}\rightarrow\rho_{#1}-{#2}\rho_{#3}}
+\fi
+
+\endinput %This allows the potential additions to not be commented out
+
+% MARK: - Potential additions
+
+% Various math things
+\newcommand{\given}{\ \big|\ }
+\newcommand{\conjugate}[1]{\overline{#1}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\approaches}[1]{\rightarrow #1}
+\newcommand{\divides}{|}
+\newcommand{\suchthat}{\text{ such that }}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% \DeclareMathOperator{\signum}{sign}
+\newcommand{\signum}[1]{\operatorname{sign\left(#1\right)}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\given}{\ \big|\ }
+\newcommand{\conjugate}[1]{\overline{#1}}
+% \DeclareMathOperator{\Re}{Re}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+% https://tex.stackexchange.com/questions/671/define-additional-math-operators-to-be-typeset-in-roman
+\newcommand{\approaches}[1]{\rightarrow #1}
+
+% hyperref
+\usepackage[ocgcolorlinks]{hyperref} %Theoretically this means that when printing, links will be the normal text color. Even if we were using `colorlinks` or `\hypersetup{colorlinks=true}` instead of `ocgcolorlinks`, this changes the weird red boxes to colored text
+\colorlet{mylinkcolor}{red!50!black} % 50% red, rest black
+\colorlet{mycitecolor}{blue!50!black} % 50% blue, rest black
+\colorlet{myurlcolor}{blue!80!black} % 80% blue, rest black
+\hypersetup{ %Make links darker
+    linkcolor=mylinkcolor,
+    citecolor=mycitecolor,
+    urlcolor=myurlcolor
+}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    urlcolor=blue!80!black,
+    linkcolor=black, % footnotes
+}
+
+% some array stuff I don't remember
+\renewcommand{\arraystretch}{1.5}
+\usepackage{array}
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{tabularx}
+
+% Heading things
+\fancypagestyle{title}{\fancyhf{}\lhead{Economics 201\\Problem Set \#6\\April 22, 2022}\rhead{Noelwah R. Netusil\\Spring 2022\\Sam Gauck}}
+\fancypagestyle{rest}{\fancyhf{}\rfoot{\thepage}}
+% \fancyhf{}
+% \lhead{Economics 201\\Problem Set \#3\\February 18, 2022}
+% \rhead{Noelwah R. Netusil\\Spring 2022\\Sam Gauck}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{rest}
+% must use \thispagestyle{title} on the first page (right after \begin{document} is fine)
+
+\renewcommand{\labelenumii}{\alph{enumii}.}
