@@ -5,7 +5,7 @@
 \RequirePackage{multicol}
 \RequirePackage{calc}
 \RequirePackage{ifthen}
-\RequirePackage[landscape]{geometry}
+\RequirePackage{geometry}
 \RequirePackage{hyperref}
 
 \ifthenelse{\lengthtest { \paperwidth = 11in}}
