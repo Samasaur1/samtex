@@ -1,3 +1,4 @@
+% vim: set filetype=tex
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{samtex-cheatsheet}[2022/10/15 A cheatsheet class based off of http://wch.github.io/latexsheet/]
 
