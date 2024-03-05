@@ -1,0 +1,56 @@
+\documentclass{samtex-cheatsheet}
+\usepackage{lipsum}
+
+\begin{document}
+
+\section{The Sam\TeX{} cheatsheet class}
+
+This package provides a \LaTeX{} class that produces cheat sheets formatted like this one.
+
+It is inspired by \url{http://wch.github.io/latexsheet/} and copies some parts of that file.
+
+\subsection{Basic usage}
+
+Here's a simple usage of this class
+
+\begin{verbatim}
+    \documentclass{samtex-cheatsheet}
+    \usepackage{lipsum}
+
+    \begin{document}
+        \section{Intro section}
+
+        \lipsum
+
+        \subsection{A subsection}
+
+        \lipsum[2]
+
+        \section{Main section}
+
+        \lipsum
+        \lipsum
+    \end{document}
+\end{verbatim}
+
+\subsection{Options}
+
+\begin{itemize}
+    \item \verb`twocol` sets the cheatsheet to be two columns instead of the default three.
+    \item \verb`fourcol` sets the cheatsheet to be four columns instead of the default three.
+    \item \verb`small` sets the cheatsheet font size to be smaller than the default.
+    \item \verb`extrasmall` sets the cheatsheet font size to be even smaller.
+\end{itemize}
+
+The options are processed in this order, so setting multiple conflicting options (\verb`twocol` and `\verb`fourcol`, for example) will act as if only the option lower down on the list was passed
+
+All other options are passed through to the base \verb`article` class.
+
+\subsection{Contact}
+
+You can find the source for this package on GitHub at \url{https://github.com/Samasaur1/samtex}, and can reach me by opening an issue there.
+
+\section{Filler text}
+
+\lipsum
+\end{document}
