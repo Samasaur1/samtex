@@ -45,4 +45,4 @@ git clone https://github.com/Samasaur1/samtex
 \end{document}
 ```
 
-Or see [the example/manual PDF here](https://github.com/Samasaur1/samtex/blob/main/cheatsheel-class/main.pdf)
+Or see [the example/manual PDF here](https://github.com/Samasaur1/samtex/blob/main/cheatsheet-class/main.pdf)
