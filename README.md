@@ -1,5 +1,13 @@
 ## Installation
 
+### [Nix](https://nixos.org)
+
+This repository is a Nix flake, so:
+
+```nix
+texliveFull.withPackages (_: [ inputs.samtex.packages.${pkgs.system}.default ])
+```
+
 ### macOS
 
 ```bash
