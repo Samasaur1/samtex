@@ -5,8 +5,10 @@
 This repository is a Nix flake, so:
 
 ```nix
-texliveFull.withPackages (_: [ inputs.samtex.packages.${pkgs.system}.default ])
+texliveFull.withPackages (_: [ inputs.samtex.packages.${pkgs.system}.default.tex ])
 ```
+
+I seem to need the `.tex` on the end, though I'm not sure why. If you get errors, try it without the `.tex` at the end.
 
 ### macOS
 
