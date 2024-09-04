@@ -12,17 +12,27 @@ I seem to need the `.tex` on the end, though I'm not sure why. If you get errors
 
 ### macOS
 
+If you have MacTeX
+
 ```bash
 mkdir -p ~/Library/texmf/tex/latex
 cd ~/Library/texmf/tex/latex
 git clone https://github.com/Samasaur1/samtex
 ```
 
+If you have non-Mac-specific TexLive:
+
+```bash
+mkdir -p ~/texmf/tex/latex
+cd ~/texmf/tex/latex
+git clone https://github.com/Samasaur1/samtex
+```
+
 ### Linux
 
 ```bash
-mkdir -p ~/Library/texmf/tex/latex
-cd ~/Library/texmf/tex/latex
+mkdir -p ~/texmf/tex/latex
+cd ~/texmf/tex/latex
 git clone https://github.com/Samasaur1/samtex
 ```
 
